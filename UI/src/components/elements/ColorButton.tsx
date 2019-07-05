@@ -3,21 +3,22 @@ import React from "react";
 import { createStyles, withStyles, WithStyles, Grid, Theme, Box } from "@material-ui/core";
 const styles = (theme:Theme)=>createStyles({
     container:{
-        paddingBottom:"17px",
-        marginTop:"-5px",
-        [theme.breakpoints.down('md')]: {
-            width:"25px",
-            minWidth:"25px"
+        [theme.breakpoints.down('sm')]: {
+            width:"30px",
+            minWidth:"30px",
+            marginLeft:"32.5px",
+            height:"48px",
+            lineHeight:"48px"
         },
         cursor:"pointer",
-        maxHeight:"38px",
         marginRight:"5px",
-        justifyContent:"center",
-        width:"150px"
+        textAlign:"center",
+        marginLeft:"32.5px",
+        display:"inline-block"
     },
     icon:{
         filter:"invert(0.4) sepia(0) saturate(1) hue-rotate(0deg) brightness(1)",
-        marginRight:"10px"
+        marginRight:"10px"  
     },
     iconHover:{
         filter:"invert(0.19) sepia(0.5) saturate(4) hue-rotate(360deg) brightness(1)",
@@ -27,27 +28,30 @@ const styles = (theme:Theme)=>createStyles({
         fontSize:16,
         fontWeight:700,
         color:"#969696",
-        lineHeight:"25px",
         marginLeft:"5px",
-        height:"25px",
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
             display:"none"
-        }
+        },
+        display:"inline-block",
+        height:"48px",
+        lineHeight:"48px"
     },
     menuTextHover:{
         fontSize:16,
         fontWeight:700,
         color:"#FFD26C",
-        lineHeight:"25px",
         marginLeft:"5px",
-        height:"25px",
         [theme.breakpoints.down('sm')]: {
             display:"none"
-        }
+        },
+        display:"inline-block",
+        height:"48px",
+        lineHeight:"48px"
     },
     iconCell:{
-        height:"25px",
-        float:"left"
+        display:"inline-block",
+        lineHeight:"28px",
+        verticalAlign:"sub"
     }
 });
 interface ColorButtonProps extends WithStyles<typeof styles>{
@@ -104,16 +108,16 @@ class ColorButton extends React.Component<ColorButtonProps,ColorButtonState>{
     }
     render(){
         return(
-            <Box style={{borderBottom:`#FFD26C ${this.state.bottomBarPx}px solid`}} className={this.props.classes.container} onMouseOver={()=>this._mouseOver()} 
+            <div style={{borderBottom:`#FFD26C ${this.state.bottomBarPx}px solid`}} className={this.props.classes.container} onMouseOver={()=>this._mouseOver()} 
                 onMouseLeave={()=>this._mouseLeave()}>
-                <Box className={this.props.classes.iconCell}>
+                <div className={this.props.classes.iconCell}>
                     <img width="25" height="25" src={this.props.imgSrc} 
                         className={this.state.bottomBarPx>=this.maxBarPx ?  this.props.classes.iconHover : this.props.classes.icon}/>
-                </Box>
-                <Box className={this.state.bottomBarPx>=this.maxBarPx ?  this.props.classes.menuTextHover : this.props.classes.menuText}>
-                        {this.props.text}
-                </Box>
-            </Box>
+                </div>
+                <div className={this.state.bottomBarPx>=this.maxBarPx ?  this.props.classes.menuTextHover : this.props.classes.menuText}>
+                    {this.props.text}
+                </div>
+            </div>
         );  
     }
 }

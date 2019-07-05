@@ -17,7 +17,6 @@ const styles = (theme:Theme)=>createStyles({
     width: 200
   },
   container:{
-    paddingBottom:"0px"
   },
   topBar:{
     borderBottom:"black thin solid"
@@ -39,38 +38,12 @@ class App extends React.Component<AppProps,AppState> {
     }
   };
   render(){
-    let classes = this.props.classes
+    let classes = this.props.classes;
     return (
-      <Grid container spacing={3} className={this.props.classes.container}>
+      <Grid container className={this.props.classes.container}>
         <Grid item xs = {12} >
           <Nav />
         </Grid>
-        <Grid item xs ={6}>
-          <TextField
-            id="title"
-            label="Title"
-            className={this.props.classes.textField}
-            onChange={this.handleChange("title")}
-            margin="normal"
-          />
-          <br/>
-          <TextField
-            rows="4"
-            id="body"
-            multiline
-            label="Body"
-            className={this.props.classes.textField}
-            onChange={this.handleChange("body")}
-            margin="normal"
-            variant="outlined"
-          />
-          <br/>
-          <Button variant="contained" color="primary" onClick={()=>this._addNewPost()}>Add New</Button>
-        </Grid>
-        <Grid item xs ={6}>
-          <Posts posts={this.state.posts}/>
-        </Grid>
-        
       </Grid>
     );
   }
