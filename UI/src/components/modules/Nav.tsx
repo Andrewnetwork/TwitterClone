@@ -20,9 +20,7 @@ const styles = (theme:Theme)=>createStyles({
         textAlign:"center"
     },
     logo:{
-        textAlign:"center",
-        width:"30px",
-        display:"inline",
+        display:"inline-block",
         lineHeight:"50px"
     },
     iconButton: {
@@ -52,6 +50,7 @@ const styles = (theme:Theme)=>createStyles({
     }
 });
 interface NavProps extends WithStyles<typeof styles>{
+    tweetButtonHandler:Function;
 }
 class Nav extends React.Component<NavProps,{}>{
     render(){
@@ -74,7 +73,7 @@ class Nav extends React.Component<NavProps,{}>{
                     <IconButton className={classes.iconButton} aria-label="Search">
                         <SearchIcon />
                     </IconButton>
-                    <Button variant="contained" color="primary" onClick={()=>alert("D")}>
+                    <Button variant="contained" color="primary" onClick={()=>this.props.tweetButtonHandler()}>
                         Tweet
                     </Button>
                 </div>
