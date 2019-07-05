@@ -5,8 +5,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { createStyles, Theme, withStyles,WithStyles } from '@material-ui/core/styles';
-import Nav from "./components/elements/ColorButton";
-import ColorButton from './components/elements/ColorButton';
+import Nav from "./components/modules/Nav";
 
 interface AppState{
   title:string;
@@ -18,8 +17,6 @@ const styles = (theme:Theme)=>createStyles({
     width: 200
   },
   container:{
-    paddingLeft:"10px",
-    paddingTop:"10px",
     paddingBottom:"0px"
   },
   topBar:{
@@ -45,11 +42,8 @@ class App extends React.Component<AppProps,AppState> {
     let classes = this.props.classes
     return (
       <Grid container spacing={3} className={this.props.classes.container}>
-        <Grid item xs = {12} className={classes.topBar}>
-          <Grid container>
-            <ColorButton />
-            <ColorButton />
-          </Grid>
+        <Grid item xs = {12} >
+          <Nav />
         </Grid>
         <Grid item xs ={6}>
           <TextField
