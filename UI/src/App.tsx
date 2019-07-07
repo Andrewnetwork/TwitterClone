@@ -47,7 +47,7 @@ class App extends React.Component<AppProps,AppState> {
         <Grid item xs = {12} >
           <Nav tweetButtonHandler={()=>this.setState({tweetModalOpen:true})} />
         </Grid>
-        <TweetModal isOpen={this.state.tweetModalOpen} />
+        <TweetModal isOpen={this.state.tweetModalOpen} handleChange={(state:AppState)=>this.setState(state)}/>
       </Grid>
     );
   }
